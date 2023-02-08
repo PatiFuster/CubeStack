@@ -4,6 +4,7 @@ import { GUI } from "three/addons/libs/lil-gui.module.min.js";
 import * as TWEEN from '@tweenjs/tween.js'
 const axis = "X";
 const alt = 1;
+//Clase con Parametros para el Cubo, Cantidad de Cubos, Eje de Construccion
 class Params {
     constructor() {
         this.cube_num = 0;
@@ -33,7 +34,7 @@ function main() {
         camera.updateProjectionMatrix(); // Apply changes
     })
 
-    // CUBE CREATION
+    // CUBE CREATION, creamos el Stack de Cubos
     function parametros(cube_num, axis_x, axis_y, axis_z) {
         var cube = new THREE.Group();
         var stack = new THREE.Group();
@@ -266,70 +267,6 @@ function main() {
         }
     };
 
-
-
-
-    // Create spheres: 
-    const sphereMeshes = [];
-    const sphereGeometry = new THREE.SphereGeometry(0.1, 32, 32); // Define geometry
-    const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xC56CEF }); // Define material
-    for (let i = 0; i < 2; i++) {
-        sphereMeshes[i] = new THREE.Mesh(sphereGeometry, sphereMaterial); // Build sphere
-        sphereMeshes[i].position.set(0, 0, 0);
-        //scene.add(sphereMeshes[i]); // Add sphere to canvas
-    }
-    // Lights
-    const lights = []; // Storage for lights
-    // const lightHelpers = []; // Storage for light helpers
-    // Properties for each light
-    const lightValues = [
-        { colour: 0x14D14A, intensity: 8, dist: 12, x: 1, y: 0, z: 8 },
-        { colour: 0xBE61CF, intensity: 6, dist: 12, x: -2, y: 1, z: -10 },
-        { colour: 0x00FFFF, intensity: 3, dist: 10, x: 0, y: 10, z: 1 },
-        { colour: 0x00FF00, intensity: 6, dist: 12, x: 0, y: -10, z: -1 },
-        { colour: 0x16A7F5, intensity: 6, dist: 12, x: 10, y: 3, z: 0 },
-        { colour: 0x90F615, intensity: 6, dist: 12, x: -10, y: -1, z: 0 }
-    ];
-    for (let i = 0; i < 6; i++) {
-        // Loop 6 times to add each light to lights array
-        // using the lightValues array to input properties
-        lights[i] = new THREE.PointLight(
-            lightValues[i]['colour'],
-            lightValues[i]['intensity'],
-            lightValues[i]['dist']
-        );
-
-        lights[i].position.set(
-            lightValues[i]['x'],
-            lightValues[i]['y'],
-            lightValues[i]['z']
-        );
-
-        scene.add(lights[i]);
-        // Add light helpers for each light
-        //lightHelpers[i] = new THREE.PointLightHelper(lights[i]);
-        //scene.add(lightHelpers[i]);
-    };
-
-    const spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(10, 10, 10);
-    spotLight.castShadow = true;
-
-    spotLight.shadow.mapSize.width = 1024;
-    spotLight.shadow.mapSize.height = 1024;
-
-    spotLight.shadow.camera.near = 500;
-    spotLight.shadow.camera.far = 4000;
-    spotLight.shadow.camera.fov = 30;
-
-    scene.add(spotLight);
-    const light = new THREE.PointLight(0xffffff, 1, 1000);
-    light.position.set(10, 10, 10);
-    scene.add(light);
-    //Trackball Controls for Camera 
-    //const controls = new TrackballControls(camera, renderer.domElement);
-    //controls.rotateSpeed = 4;
-    //controls.dynamicDampingFactor = 0.15;
     const controls = new OrbitControls(camera, renderer.domElement);
     // Axes Helper
     const axesHelper = new THREE.AxesHelper(5);
@@ -339,7 +276,6 @@ function main() {
     // Angle increment on each render
     const dTheta = 2 * Math.PI / 100;
     // Rendering Function
-
 
     const sphere = new THREE.SphereGeometry(0.5, 16, 8);
 
@@ -371,11 +307,6 @@ function main() {
     const rendering = function() {
         // Rerender every time the page refreshes (pause when on another tab)
         requestAnimationFrame(rendering);
-        // Update trackball controls
-        //controls.update();
-        // Constantly rotate box
-        //scene.rotation.z -= 0.005;
-        //scene.rotation.x -= 0.01;
         //Increment theta, and update sphere coords based off new value        
         theta += dTheta;
         // Store trig functions for sphere orbits 
@@ -394,8 +325,6 @@ function main() {
         light2.position.x = trigs[1]['r'] * trigs[1]['x'];
         light2.position.y = trigs[1]['r'] * trigs[1]['y'];
         light2.position.z = trigs[1]['r'] * trigs[1]['z'];
-
-
         renderer.render(scene, camera);
     }
 
