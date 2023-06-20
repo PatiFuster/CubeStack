@@ -13,6 +13,19 @@ Para levantar el Proyecto:
 | Header      | Title       | Here's this   |
 | Paragraph   | Text        | And more      |
 
+## Instructions
+
+To run the `cv_parser` application, you need to use the following commands based on the CV format:
+
+### AltaCV
+`python3 -m cv_parser altacv cv-samples/alta_cv/alta_cv_en.pdf`
+
+### AutoCV
+`python3 -m cv_parser autocv cv-samples/auto_cv/auto_cv_en.pdf`
+
+
+
+
 ## Sección de ejemplo
 
 Esta es una sección de ejemplo en un archivo README. Aquí puedes proporcionar información relevante, instrucciones, descripciones, etc.
