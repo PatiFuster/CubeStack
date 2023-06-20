@@ -23,6 +23,9 @@ To run the `cv_parser` application, you need to use the following commands based
 ### AutoCV
 `python3 -m cv_parser autocv cv-samples/auto_cv/auto_cv_en.pdf`
 
+### HipsterCV
+`python3 -m cv_parser hipstercv cv-samples/hipster_cv/hipster_cv_en.pdf`
+
 
 
 
