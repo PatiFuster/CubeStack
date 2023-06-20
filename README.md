@@ -17,7 +17,7 @@ Para levantar el Proyecto:
 
 Esta es una sección de ejemplo en un archivo README. Aquí puedes proporcionar información relevante, instrucciones, descripciones, etc.
 
-- Punto 1: Detalles sobre el primer punto.
+- Punto 1: Detalles sobre el primer punto. `python script.py`.
 - Punto 2: Detalles sobre el segundo punto.
 - Punto 3: Detalles sobre el tercer punto.
 
